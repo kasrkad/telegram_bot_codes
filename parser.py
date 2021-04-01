@@ -32,8 +32,3 @@ def get_1c_codes(phone_number):
                     code_dict[split_list[3]]=split_list[12]
                 del split_list[0:15]        
     return f'Для номера {phone_number} - {code_dict[phone_number]}'
-
-try:
-    print (get_1c_codes('79227192634'))
-except KeyError as exc:
-    print (f'Номер не обнаружен, проверьте привязан ли номер к 1с или повторите запрос через 20 секунд')
