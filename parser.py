@@ -2,6 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 from log_pass import DATA
+import time
 
 def get_1c_codes(phone_number):
     
@@ -10,7 +11,9 @@ def get_1c_codes(phone_number):
 
     session  = requests.Session()
     authorization = session.post('https://my.devinotele.com/Account/LogOn', data = DATA )
+    print(session.cookies)
     for site in parse_list:
+        time.sleep(3)
         print (f'проверяем списки смс {authorization}')
         dd = session.get(site)
         html_doc = BeautifulSoup(dd.text, features='html.parser')
@@ -32,3 +35,5 @@ def get_1c_codes(phone_number):
                     code_dict[split_list[3]]=split_list[12]
                 del split_list[0:15]        
     return f'Для номера {phone_number} - {code_dict[phone_number]}'
+
+get_1c_codes('79227192634')

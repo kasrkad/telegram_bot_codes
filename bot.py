@@ -4,7 +4,6 @@ from telebot import  types
 from parser import get_1c_codes
 from log_pass import id_bot
 
-1
 bot = telebot.TeleBot(id_bot)
 
 user = bot.get_me()
